@@ -18,6 +18,14 @@
 
 <!-- TODO -->
 
+# Quick start
+
+本项目基于[wails](https://github.com/wailsapp/wails)构建，需要先安装wails
+
+[安装wails](https://wails.io/docs/gettingstarted/installation/)
+
+开发请使用vscode，以最佳的开发体验，运行debug配置都已经写在.vscode文件夹内
+
 # 开发进度
 
 2023.08.06 项目启动，建立后端文件夹
