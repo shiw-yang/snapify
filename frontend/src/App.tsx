@@ -1,40 +1,59 @@
-import { useEffect, useState } from 'react';
-// import logo from './assets/images/logo-universal.png';
-import './App.css';
-import { GetMenusName } from "../wailsjs/go/menu/MenuModule";
-import MenuItem from "antd/lib/menu/MenuItem";
-import { Layout, Space, theme, Menu } from 'antd';
+import { useEffect, useState } from "react";
+import {
+  SettingOutlined,
+  CameraOutlined,
+  ProfileOutlined,
+} from "@ant-design/icons";
+import "./App.css";
+import { Layout, Menu, Button } from "antd";
+import Snap from "./page/snap/snap";
 const { Header, Content } = Layout;
+const menu = [
+  {
+    label: "snap",
+    key: "snap",
+    icon: <CameraOutlined />,
+  },
+  {
+    label: "profile",
+    key: "profile",
+    icon: <ProfileOutlined />,
+  },
+  {
+    label: "settings",
+    key: "settings",
+    icon: <SettingOutlined />,
+  },
+];
 
-const App: React.FC = () => {
-    const [menus, setMenus] = useState<string[]>([])
-    useEffect(() => {
-        GetMenusName().then((res) => {
-            setMenus(res)
-        })
-    }, [])
-    const {
-        token: { colorBgContainer }
-    } = theme.useToken();
-    return (
-        <Layout className="layout">
-            <Header className='header'>
-                <Menu
-                    style={{ "margin-left": "auto" }}
-                    theme="dark"
-                    mode="horizontal"
-                    defaultSelectedKeys={['2']}
-                    items={new Array(menus.length).fill(menus).map(
-                        (item, index) => {
-                            return {
-                                key: index,
-                                label: item[index],
-                            }
-                        }
-                    )}
-                />
-            </Header>
-        </Layout >
-    );
-}
-export default App
+const App = () => {
+  const [current, setCurrent] = useState("snap");
+  const onClick = (e: any) => {
+    console.log("click ", e);
+    setCurrent(e.key);
+  };
+  const renderContent = () => {
+    switch (current) {
+      case "snap":
+        return <Snap />;
+      case "profile":
+        return <div>PROFILE</div>;
+      case "settings":
+        return <div>SETTINGS</div>;
+      default:
+        return <div>SNAP</div>;
+    }
+  };
+  return (
+    <Layout className="layout">
+      <Menu
+        onClick={onClick}
+        selectedKeys={[current]}
+        mode="horizontal"
+        items={menu}
+      ></Menu>
+      <Content className="content">{renderContent()}</Content>
+    </Layout>
+  );
+};
+export default App;

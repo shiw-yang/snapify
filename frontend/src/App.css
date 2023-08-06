@@ -1,7 +1,11 @@
 .layout {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    width: 330px;
+    height: 440px;
+    margin: auto;
 }
 
 .header {
@@ -9,6 +13,7 @@
 }
 
 .content {
+    padding: 170px;
     flex: 1 1 auto;
     overflow: auto;
 }

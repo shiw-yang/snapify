@@ -4,7 +4,7 @@ import (
 	"embed"
 
 	app "github.com/shiwyang/snapify/backend/application"
-	constant "github.com/shiwyang/snapify/backend/const"
+	constant "github.com/shiwyang/snapify/backend/constant"
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
 	"github.com/wailsapp/wails/v2/pkg/options/assetserver"
